@@ -4,6 +4,7 @@ import com.dev10.exception.GenericRuntimeException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.MockLicence;
 
 import java.util.ArrayList;
 
@@ -29,25 +30,36 @@ class BusinessLogicTest {
         businessLogic.cart = new ArrayList<>();
 
         // WHEN
-        businessLogic.addValueToCart("plop");
+        Licence licence = MockLicence.mock(LicenceType.STUDENT, 0);
+        businessLogic.addValueToCart(licence);
 
         // THEN
         assertEquals(1, businessLogic.cart.size());
-        assertEquals("plop", businessLogic.cart.get(0));
+        assertEquals(LicenceType.STUDENT, businessLogic.cart.get(0).getLicenceType());
     }
 
     @Test
     void onAddValueToCart_withAlreadyExistingValue_shouldThrowRunTimeException() {
         // GIVEN
         businessLogic.cart = new ArrayList<>();
-        businessLogic.addValueToCart("plop");
+        businessLogic.addValueToCart(MockLicence.mock(LicenceType.STUDENT, 0));
 
         // WHEN-THEN
         GenericRuntimeException exception = assertThrows(
                 GenericRuntimeException.class,
-                () -> businessLogic.addValueToCart("plop")
+                () -> businessLogic.addValueToCart(MockLicence.mock(LicenceType.STUDENT, 0))
         );
-        assertEquals("value already is in cart", exception.getMessage());
+        assertEquals("licence of type STUDENT already is in cart", exception.getMessage());
+    }
+
+    @Test
+    void onGetTotalCart_withEmptyCart_shouldReturn0() {
+        // TODO
+    }
+
+    @Test
+    void onGetTotalCart_withCartFull_shouldReturnTotal() {
+        // TODO
     }
 
     @Test
