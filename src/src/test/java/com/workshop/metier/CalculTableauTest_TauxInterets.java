@@ -1,6 +1,8 @@
-package com.workshop.contrat;
+package com.workshop.metier;
 
 import com.dev10.exception.BadArgumentException;
+import com.workshop.metier.contrat.Contrat;
+import com.workshop.metier.echeance.Echeance;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -101,7 +103,7 @@ class CalculTableauTest_TauxInterets {
         // THEN - Exemple de test sur le paramètre envoyée à une méthode d'une classe Mockée ou Spyée
         ArgumentCaptor<Contrat> argument = ArgumentCaptor.forClass(Contrat.class);
         verify(calculTableau).validateContrat(argument.capture());
-        // On peut récupérer le contrat qui a été envoyée à la méthode validateContrat de notre CalculTableau
+        // On peut récupérer le metier qui a été envoyée à la méthode validateContrat de notre CalculTableau
         assertEquals("CODE_CONTRAT_X", argument.getValue().getCode());
     }
 

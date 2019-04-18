@@ -1,34 +1,29 @@
-package com.workshop.contrat;
+package com.workshop.metier.contrat;
+
+import com.dev10.bean.Bean;
+import com.workshop.metier.echeance.Echeance;
 
 import javax.annotation.Nonnull;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Contrat {
+public class Contrat extends Bean {
 
-    private long id;
-
+    @Nonnull
     private String code;
 
+    @Nonnull
     private double montant;
 
-    private double taux;
+    private String codeTaux;
 
+    @Nonnull
     private int duree;
 
     @Nonnull
     private LocalDate dateDebut;
 
     private List<Echeance> listEcheance;
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getCode() {
         return code;
@@ -44,14 +39,6 @@ public class Contrat {
 
     public void setMontant(double montant) {
         this.montant = montant;
-    }
-
-    public double getTaux() {
-        return taux;
-    }
-
-    public void setTaux(double taux) {
-        this.taux = taux;
     }
 
     public int getDuree() {
@@ -78,9 +65,17 @@ public class Contrat {
         this.dateDebut = dateDebut;
     }
 
+    public String getCodeTaux() {
+        return codeTaux;
+    }
+
+    public void setCodeTaux(String codeTaux) {
+        this.codeTaux = codeTaux;
+    }
+
     @Override
     public String toString() {
-        return "Contrat(" + this.getCode() + ", montant=" + this.getMontant() + ", duree=" + this.getDuree() + ", debut=" + this.getDateDebut() + ", taux=" + this.getTaux() + ", listEcheance=" + this.getListEcheance() + ")";
+        return "Contrat(" + this.getCode() + ", montant=" + this.getMontant() + ", duree=" + this.getDuree() + ", debut=" + this.getDateDebut() + ", codeTaux=" + this.getCodeTaux() + ", listEcheance=" + this.getListEcheance() + ")";
     }
 
 }

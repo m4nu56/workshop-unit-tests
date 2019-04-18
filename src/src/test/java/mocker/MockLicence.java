@@ -1,4 +1,4 @@
-package utils;
+package mocker;
 
 import com.workshop.licence.Licence;
 import com.workshop.licence.LicenceType;

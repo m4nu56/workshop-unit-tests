@@ -1,22 +1,33 @@
-package com.workshop.contrat;
+package com.workshop.metier.echeance;
 
+import com.dev10.bean.Bean;
+
+import javax.annotation.Nonnull;
 import java.time.LocalDate;
 
-public class Echeance {
+public class Echeance extends Bean {
 
-    private long id;
+    @Nonnull
+    private long idContrat;
+
+    @Nonnull
     private double capital;
+
+    @Nonnull
     private double interets;
+
+    @Nonnull
     private LocalDate date;
+
+    @Nonnull
     private double encours;
 
-
-    public long getId() {
-        return id;
+    public long getIdContrat() {
+        return idContrat;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdContrat(long idContrat) {
+        this.idContrat = idContrat;
     }
 
     public double getCapital() {

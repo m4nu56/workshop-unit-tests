@@ -1,6 +1,9 @@
-package com.workshop.contrat;
+package com.workshop.metier;
 
 import com.dev10.exception.BadArgumentException;
+import com.workshop.metier.contrat.Contrat;
+import com.workshop.metier.echeance.Echeance;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.annotation.Nonnull;
 import java.time.LocalDate;
@@ -34,6 +37,12 @@ public class CalculTableau {
             echeance.setDate(prevDateEcheance.plusYears(1));
             prevDateEcheance = echeance.getDate();
 
+            // Seulement si le codeTaux est défini on calcul les intérêts
+            if (StringUtils.isNotBlank(contrat.getCodeTaux())) {
+                double tauxInterets = instancieCalculTauxInterets().calcul(contrat.getCodeTaux(), echeance.getDate());
+                echeance.setInterets(Math.round(encours * tauxInterets / 100));
+            }
+
             echeance.setCapital(Math.round(montant / contrat.getDuree()));
             encours = Math.round(encours - echeance.getCapital());
             echeance.setEncours(encours);
@@ -45,14 +54,23 @@ public class CalculTableau {
     }
 
     /**
-     * Validate contrat fields
+     * Utilisée pour mocker le comportement de la class CalculTauxInterets
+     *
+     * @return
+     */
+    CalculTauxInterets instancieCalculTauxInterets() {
+        return new CalculTauxInterets();
+    }
+
+    /**
+     * Validate metier fields
      *
      * @param contrat
      * @throws BadArgumentException
      */
-    private void validateContrat(@Nonnull Contrat contrat) throws BadArgumentException {
+    void validateContrat(@Nonnull Contrat contrat) throws BadArgumentException {
         if (contrat.getDateDebut() == null) {
-            throw new BadArgumentException("dateDebut contrat mandatory");
+            throw new BadArgumentException("dateDebut metier mandatory");
         }
     }
 

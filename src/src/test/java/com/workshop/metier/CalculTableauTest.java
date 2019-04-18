@@ -1,6 +1,8 @@
-package com.workshop.contrat;
+package com.workshop.metier;
 
 import com.dev10.exception.BadArgumentException;
+import com.workshop.metier.contrat.Contrat;
+import com.workshop.metier.echeance.Echeance;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -86,7 +88,7 @@ class CalculTableauTest {
         );
 
         // THEN
-        assertEquals("dateDebut contrat mandatory", exception.getMessage());
+        assertEquals("dateDebut metier mandatory", exception.getMessage());
     }
 
 }

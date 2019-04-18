@@ -1,0 +1,32 @@
+<!-- ##############################################################" -->
+<!-- IMPORTANT -->
+<!--
+# Pour que les "|" ou "%7C" ne soient plus interceptés par un autre process de tomcat 7.076, 8.0.42, or 8.5.12
+# Il faut ajouter ce paramètre au catalina.properties.
+# Pour le development directement dans le Server Tomcat créé dans Eclipse car ce catalina.properties override celui qui est dans le dossier conf/ de tomcat
+# https://forums.madcapsoftware.com/viewtopic.php?f=13&t=28996&p=127319&hilit=apache#p127319
+tomcat.util.http.parser.HttpParser.requestTargetAllow=|
+ -->
+<!-- ##############################################################" -->
+<Context>
+    <Resource
+            auth="Container"
+            defaultAutoCommit="true"
+            defaultReadOnly="false"
+            defaultTransactionIsolation="1"
+            driverClassName="org.postgresql.Driver"
+            initialSize="1"
+            logAbandoned="true"
+            maxActive="1"
+            maxIdle="1"
+            maxWait="10000"
+            minIdle="1"
+            name="jdbc/datasourceName"
+            removeAbandoned="true"
+            removeAbandonedTimeout="300"
+            type="javax.sql.DataSource"
+            username="postgres"
+            password="postgres"
+            url="jdbc:postgresql://localhost:5432/workshop_tests_ci"
+    />
+</Context>

@@ -1,10 +1,10 @@
 package com.workshop.licence;
 
 import com.dev10.exception.GenericRuntimeException;
+import mocker.MockLicence;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import utils.MockLicence;
 
 import java.util.ArrayList;
 
