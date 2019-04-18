@@ -1,4 +1,4 @@
-package com.workshop;
+package com.workshop.licence;
 
 public class Licence {
 

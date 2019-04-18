@@ -1,4 +1,4 @@
-package com.workshop;
+package com.workshop.licence;
 
 import com.dev10.exception.GenericRuntimeException;
 import org.junit.jupiter.api.AfterEach;
@@ -54,12 +54,24 @@ class BusinessLogicTest {
 
     @Test
     void onGetTotalCart_withEmptyCart_shouldReturn0() {
-        // TODO
+        // GIVEN
+        businessLogic.cart = new ArrayList<>();
+        // WHEN
+        double totalCart = businessLogic.getTotalCart();
+        // THEN
+        assertEquals(0, totalCart);
     }
 
     @Test
     void onGetTotalCart_withCartFull_shouldReturnTotal() {
-        // TODO
+        // GIVEN
+        businessLogic.cart = new ArrayList<>();
+        businessLogic.addValueToCart(MockLicence.mock(LicenceType.STUDENT, 10));
+        businessLogic.addValueToCart(MockLicence.mock(LicenceType.ENTERPRISE, 30));
+        // WHEN
+        double totalCart = businessLogic.getTotalCart();
+        // THEN
+        assertEquals(40, totalCart);
     }
 
     @Test

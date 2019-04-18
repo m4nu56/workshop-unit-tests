@@ -1,4 +1,4 @@
-package com.workshop;
+package com.workshop.licence;
 
 import com.dev10.exception.GenericRuntimeException;
 
@@ -30,8 +30,7 @@ public class BusinessLogic {
      * @return
      */
     public double getTotalCart() {
-        // TODO: TDD
-        return 0;
+        return cart.stream().mapToDouble(Licence::getValue).sum();
     }
 
 }
