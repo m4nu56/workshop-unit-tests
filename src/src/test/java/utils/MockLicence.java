@@ -1,7 +1,7 @@
 package utils;
 
-import com.workshop.Licence;
-import com.workshop.LicenceType;
+import com.workshop.licence.Licence;
+import com.workshop.licence.LicenceType;
 
 public class MockLicence {
 
